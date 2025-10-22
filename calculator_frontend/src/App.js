@@ -1,49 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './index.css';
+import './styles/theme.css';
+import Calculator from './components/Calculator';
 
 // PUBLIC_INTERFACE
-function App() {
-  const [theme, setTheme] = useState('light');
-
-  // Effect to apply theme to document element
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-  }, [theme]);
-
-  // PUBLIC_INTERFACE
-  const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
-  };
-
+export default function App() {
+  /**
+   * Minimal entry that centers the Calculator and applies the Ocean Professional theme.
+   * The Calculator component implements all UI and logic, including keyboard support.
+   */
   return (
-    <div className="App">
-      <header className="App-header">
-        <button 
-          className="theme-toggle" 
-          onClick={toggleTheme}
-          aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-        >
-          {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
-        </button>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          Current theme: <strong>{theme}</strong>
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-root">
+      <main className="page">
+        <Calculator />
+      </main>
     </div>
   );
 }
-
-export default App;
